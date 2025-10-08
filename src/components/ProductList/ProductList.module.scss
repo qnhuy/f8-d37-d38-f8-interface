@@ -1,0 +1,30 @@
+.productContainer {
+    text-align: center;
+    min-width: 300px;
+    min-height: 200px;
+}
+
+.title {
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.productList {
+    display: flex;
+    gap: 28px;
+}
+
+.productItem {
+    max-width: 120px;
+}
+
+
+.productImg {
+    width: 100px;
+    height: 140px;
+    object-fit: contain;
+}
+
+.productName {
+    font-size: 1.4rem;
+}

@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react'
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 import styles from './Modal.module.scss'
 
-const Modal = ({
+const Modal = forwardRef(({
     children,
-    isOpen = false,
+    isOpen: _isOpen = false,
     onAfterOpen = () => { },
     onAfterClose = () => { },
     onRequestClose = () => { },
@@ -22,11 +22,27 @@ const Modal = ({
     bodyCloseClass,
     overlayOpenClass,
     overlayCloseClass,
-}) => {
+}, ref) => {
+    const [isOpen, setIsOpen] = useState(_isOpen)
+
+    useImperativeHandle(ref, () => {
+        return {
+            open() {
+                setIsOpen(true)
+            },
+            close() {
+                setIsOpen(false)
+            },
+            toogle() {
+                setIsOpen(!isOpen)
+            }
+        }
+    }, [isOpen])
+
     const [bodyClose, setBodyClose] = useState('')
     const [overlayClose, setOverlayClose] = useState('')
 
-    // hadnle close modal and close animation
+    // handle close modal and close animation
     function handleRequestClose() {
         setTimeout(onRequestClose, closeTimeoutMS)
         setBodyClose(bodyCloseClass)
@@ -53,7 +69,7 @@ const Modal = ({
         }
     }, [isOpen, onAfterClose, onAfterOpen, shouldCloseOnEsc])
 
-    // action with body of web when open the modal
+    // action with body of web when opening the modal
     useEffect(() => {
         document.body.classList.add(webBodyOpenClass)
         document.body.classList.add(webHtmlOpenClass)
@@ -63,26 +79,16 @@ const Modal = ({
         }
     }, [webBodyOpenClass, webHtmlOpenClass])
 
-    return (
+    return (isOpen &&
         <div className={styles.modalContainer}>
             {/* overlay */}
             <div
-                className={clsx(
-                    styles.overlay,
-                    overlayClassName,
-                    overlayOpenClass,
-                    overlayClose
-                )}
+                className={clsx(styles.overlay, overlayClassName, overlayOpenClass, overlayClose)}
                 onClick={() => shouldCloseOnOverlayClick ? handleRequestClose() : false}
             />
 
             {/* body */}
-            <div className={clsx(
-                styles.body,
-                bodyClassName,
-                bodyOpenClass,
-                bodyClose
-            )}>
+            <div className={clsx(styles.body, bodyClassName, bodyOpenClass, bodyClose)}>
                 {/* close button */}
                 <button className={styles.closeBtn} onClick={handleRequestClose}>
                     <i className="fa-solid fa-xmark"></i>
@@ -95,7 +101,7 @@ const Modal = ({
             </div>
         </div>
     )
-}
+})
 
 Modal.propTypes = {
     children: PropTypes.node.isRequired,

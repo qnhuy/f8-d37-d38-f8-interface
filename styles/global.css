@@ -25,3 +25,43 @@ textarea {
     font-family: inherit;
     font-size: inherit;
 }
+
+.loader {
+    width: 30px;
+    height: 30px;
+    margin: 20px;
+    border: 5px solid #9b9b9b;
+    border-bottom-color: #FF3D00;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 0.8s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.primary-btn {
+    padding: 4px 10px;
+    background-color: white;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 10px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    box-shadow: 0 0 4px #ccc;
+}
+
+.avatar-border {
+    border: 2px solid rgba(216, 129, 29, 0.521);
+}

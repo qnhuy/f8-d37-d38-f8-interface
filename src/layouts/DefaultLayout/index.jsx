@@ -9,7 +9,9 @@ const DefaultLayout = function () {
 
         <div style={{ display: 'flex', height: 'calc(100% - 65px)' }}>
             <Sidebar />
-            <Outlet />
+            <div style={{ width: '100%' }}>
+                <Outlet />
+            </div>
         </div>
 
         <Footer />

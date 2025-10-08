@@ -8,7 +8,6 @@
     border-radius: 100%;
     overflow: hidden;
     object-fit: cover;
-    border: 2px solid #dfdfdf;
     cursor: pointer;
 }
 
@@ -58,7 +57,6 @@
 
 .optionItem {
     font-size: 1.4rem;
-    // font-weight: 500;
     padding: 10px 0;
     transition: all 0.3s;
     cursor: pointer;

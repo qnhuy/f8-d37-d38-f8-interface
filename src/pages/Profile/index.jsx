@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Profile.module.scss'
+import clsx from 'clsx'
 
 const Profile = function () {
     const [imgUrl, setImgUrl] = React.useState(null)
@@ -21,7 +22,7 @@ const Profile = function () {
         <label>
             <input type="file" accept='image/*' hidden onChange={handleInputOnChange} />
             <img
-                className={styles.img}
+                className={clsx(styles.img, 'avatar-border')}
                 src={imgUrl || defaultImg}
             />
         </label>

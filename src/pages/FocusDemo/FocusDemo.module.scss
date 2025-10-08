@@ -1,0 +1,37 @@
+.focusDemoContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.inputs {
+    margin-bottom: 8px;
+    display: flex;
+    gap: 12px;
+}
+
+.input {
+    padding: 4px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.3s;
+
+    &:focus {
+        box-shadow: 0 0 4px #a1a1a1;
+    }
+}
+
+.values {
+    display: flex;
+    gap: 168px;
+    padding: 0 4px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}

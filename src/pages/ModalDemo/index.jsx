@@ -2,7 +2,7 @@ import '../../components/Modal/Modal.module.scss'
 import styles from './ModalDemo.module.scss'
 import Modal from '../../components/Modal'
 
-import React from 'react'
+import React, { useRef } from 'react'
 
 const ModalDemo = function () {
     const [modal1IsOpen, setModal1IsOpen] = React.useState(false)
@@ -12,12 +12,13 @@ const ModalDemo = function () {
     const [modal5IsOpen, setModal5IsOpen] = React.useState(false)
     const [modal6IsOpen, setModal6IsOpen] = React.useState(false)
     const [modal7IsOpen, setModal7IsOpen] = React.useState(false)
+    const modalRef = useRef(null)
 
     return (
         <div className={styles.modalDemoContainer}>
             <div className={styles.buttons}>
                 <div>
-                    <h1>Basic modal:</h1>
+                    <h1>1. Basic modal:</h1>
                     <button
                         className={styles.openModalBtn}
                         onClick={() => setModal1IsOpen(true)}
@@ -27,7 +28,7 @@ const ModalDemo = function () {
                 </div>
 
                 <div>
-                    <h1>Modal with animation:</h1>
+                    <h1>2. Modal with animation:</h1>
                     <button
                         className={styles.openModalBtn}
                         onClick={() => setModal2IsOpen(true)}
@@ -37,7 +38,7 @@ const ModalDemo = function () {
                 </div>
 
                 <div>
-                    <h1>Modal doesn't close when click to the overlay:</h1>
+                    <h1>3. Modal doesn't close when click to the overlay:</h1>
                     <button
                         className={styles.openModalBtn}
                         onClick={() => setModal3IsOpen(true)}
@@ -47,7 +48,7 @@ const ModalDemo = function () {
                 </div>
 
                 <div>
-                    <h1>Modal doesn't close when press Esc:</h1>
+                    <h1>4. Modal doesn't close when press Esc:</h1>
                     <button
                         className={styles.openModalBtn}
                         onClick={() => setModal4IsOpen(true)}
@@ -57,7 +58,7 @@ const ModalDemo = function () {
                 </div>
 
                 <div>
-                    <h1>Modal custom with custom class name:</h1>
+                    <h1>5. Modal custom with custom class name:</h1>
                     <button
                         className={styles.openModalBtn}
                         onClick={() => setModal5IsOpen(true)}
@@ -67,7 +68,7 @@ const ModalDemo = function () {
                 </div>
 
                 <div>
-                    <h1>Modal with callback:</h1>
+                    <h1>6. Modal with callback:</h1>
                     <button
                         className={styles.openModalBtn}
                         onClick={() => setModal6IsOpen(true)}
@@ -77,10 +78,20 @@ const ModalDemo = function () {
                 </div>
 
                 <div>
-                    <h1>Lock web scroll when modal is opend:</h1>
+                    <h1>7. Lock web scroll when modal is opend:</h1>
                     <button
                         className={styles.openModalBtn}
                         onClick={() => setModal7IsOpen(true)}
+                    >
+                        Open Modal
+                    </button>
+                </div>
+
+                <div>
+                    <h1>8. Modal with useRef:</h1>
+                    <button
+                        className={styles.openModalBtn}
+                        onClick={() => modalRef.current.open()}
                     >
                         Open Modal
                     </button>
@@ -162,6 +173,15 @@ const ModalDemo = function () {
                     Preventing web scroll
                 </Modal>
             }
+
+            <Modal
+                ref={modalRef}
+                isOpen={false}
+                onRequestClose={() => modalRef.current.close()}
+            >
+                Modal with useRef
+            </Modal>
+
         </div>
     )
 }

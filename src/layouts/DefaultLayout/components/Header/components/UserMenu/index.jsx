@@ -1,6 +1,7 @@
 import styles from './UserMenu.module.scss'
 import Tippy from '../../../../../../components/Tippy'
 import { useState } from 'react'
+import clsx from 'clsx'
 
 const user = {
     name: 'Nguyen Quang Huy',
@@ -15,7 +16,7 @@ const UserMenu = function () {
         <img
             src={user.avatar}
             alt={user.name}
-            className={styles.userImg}
+            className={clsx(styles.userImg, 'avatar-border')}
         />
 
         {showUser &&

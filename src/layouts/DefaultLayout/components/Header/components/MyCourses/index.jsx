@@ -23,7 +23,7 @@ const courses = [
 const MyCourses = function () {
     const [showTippy, setShowTippy] = useState(false)
 
-    return <div className={styles.coursesContainer} onClick={() => setShowTippy(true)}>
+    return <div className={styles.coursesContainer} onClick={() => setShowTippy(!showTippy)}>
         <button className={styles.toggleBtn} onClick={() => setShowTippy(!showTippy)}>
             <p>My course</p>
             <i className={`${styles.dropdown} fa-solid fa-angle-down`}></i>

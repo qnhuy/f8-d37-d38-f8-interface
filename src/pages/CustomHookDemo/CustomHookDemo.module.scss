@@ -1,0 +1,33 @@
+.customHookContainer {
+    padding: 10px 0;
+}
+
+.sectionWrap {
+    min-height: 30px;
+
+    &:first-child {
+        margin-bottom: 40px;
+    }
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.item {
+    padding: 10px 8px;
+    background-color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:nth-child(even) {
+        background-color: #f0f0f0f8;
+    }
+
+    &:hover {
+        background-color: rgba(255, 166, 0, 0.185);
+    }
+}
